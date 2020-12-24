@@ -1,9 +1,11 @@
 def turn(array: list, who: str, m: int, n: int) -> str:
     res = ""
-    if who == "M":
+    if who == "M" and array[m-1][n-1] == "?":
         array[m - 1][n - 1] = "○"
-    else:
+    elif who == "B" and array[m-1][n-1] == "?":
         array[m - 1][n - 1] = "×"
+    else:
+        raise ValueError("空いているマスにしか書き込みはできません、やり直してください")
     for i in range(len(array)):
         res += " ".join(array[i])
         res += "\n"
@@ -14,7 +16,9 @@ def tictactoe() -> str:
     array = [["?", "?", "?"], ["?", "?", "?"], ["?", "?", "?"]]
     cnt = 0
     now = "M"
-    print("1 2のように座標を入力してください左上の座標は1 1です。右下に行くにつれて数字が増えます")
+    print("1 2のように座標を入力してください.")
+    print("座標の分布としては以下のようになっております.")
+    print("(1,1) (1,2) (1,3)\n(2,1) (2,2) (2,3)\n(3,1) (3,2) (3,3)\n")
     print("先攻は○の人です")
     while cnt < 9:
         if (array[0] == ["○", "○", "○"] or array[1] == ["○", "○", "○"] or array[2] == ["○", "○", "○"] or
@@ -32,23 +36,43 @@ def tictactoe() -> str:
               (array[0][2] == "×" and array[1][1] == "×" and array[2][0] == "×")):
             return "result: Batsu WIN!!"
         else:
-            x, y = (int(m) for m in input().split())
             if now == "M":
-                situation = turn(array, "M", x, y)
+                print("今は○の人のターンです")
+            else:
+                print("今は×の人のターンです")
+            try:
+                x, y = (int(m) for m in input().split())
+            except ValueError as e:
+                print("座標の入力形式が間違っています、入力し直してください")
+                x, y = (int(m) for m in input().split())
+            if now == "M":
+                try:
+                    situation = turn(array, "M", x, y)
+                except ValueError as e:
+                    print(e)
+                    try:
+                        x, y = (int(m) for m in input().split())
+                    except ValueError as e:
+                        print("座標の入力形式が間違っています、入力し直してください")
+                        x, y = (int(m) for m in input().split())
+                    situation = turn(array, "M", x, y)
                 print(situation)
                 now = "B"
                 cnt += 1
-                if cnt < 9:
-                    print("次は×の人のターンです")
-
             else:
-                situation = turn(array, "B", x, y)
+                try:
+                    situation = turn(array, "B", x, y)
+                except ValueError as e:
+                    print(e)
+                    try:
+                        x, y = (int(m) for m in input().split())
+                    except ValueError as e:
+                        print("座標の入力形式が間違っています、入力し直してください")
+                        x, y = (int(m) for m in input().split())
+                    situation = turn(array, "B", x, y)
                 print(situation)
                 now = "M"
                 cnt += 1
-                if cnt < 9:
-                    print("次は○の人のターンです")
-
     else:
         return "result: DRAW"
 
