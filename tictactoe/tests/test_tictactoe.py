@@ -1,6 +1,6 @@
 from unittest import TestCase
-from TicTacToe.TicTacToe import turn
-from TicTacToe.TicTacToe import whowin
+from tictactoe.tictactoe import turn
+from tictactoe.tictactoe import whowin
 
 
 class Test(TestCase):
