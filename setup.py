@@ -10,9 +10,6 @@ setup(
     license='MIT',
     install_requires=[],
     packages=find_packages(exclude=["tests"]),
-    entry_points={
-        'console_scripts': 'tictactoe-cli = tictactoe.tictactoe:main'
-    },
     classifiers=[
         "Programming Language :: Python :: 3.7",
         "License :: OSI Approved :: MIT License"
