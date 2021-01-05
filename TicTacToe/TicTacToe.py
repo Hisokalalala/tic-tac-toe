@@ -83,6 +83,7 @@ def tictactoe() -> str:
             return whowin(array)
         else:
             return "result: DRAW"
+
 if __name__ == "__main__":
     a = tictactoe()
     print(a)

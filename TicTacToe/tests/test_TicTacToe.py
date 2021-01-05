@@ -8,7 +8,6 @@ class Test(TestCase):
         self.assertEqual(turn([["?", "?", "?"], ["?", "?", "?"], ["?", "?", "?"]], "M", 1, 1), "○ ? ?\n? ? ?\n? ? ?\n")
         self.assertEqual(turn([["?", "?", "?"], ["?", "?", "?"], ["?", "?", "?"]], "B", 2, 1), "? ? ?\n× ? ?\n? ? ?\n")
 
-
 class Test(TestCase):
     def test_whowin(self):
         self.assertEqual(whowin([["○", "○", "○"], ["×", "×", "?"], ["?", "?", ""]]), "result: ○ WIN!!")
