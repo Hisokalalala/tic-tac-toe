@@ -92,7 +92,3 @@ if __name__ == "__main__":
     a = tictactoe()
     print(a)
     print("GameEnd")
-
-"""
-あとはせっかくやったエラー処理がCLIでは機能してないかも
-"""
