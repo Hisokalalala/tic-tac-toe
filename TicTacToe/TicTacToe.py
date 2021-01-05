@@ -74,8 +74,30 @@ def tictactoe() -> str:
                 now = "M"
                 cnt += 1
     else:
-        return "result: DRAW"
+        if (array[0] == ["○", "○", "○"] or array[1] == ["○", "○", "○"] or array[2] == ["○", "○", "○"] or
+                (array[0][0] == "○" and array[1][0] == "○" and array[2][0] == "○") or (
+                        array[0][1] == "○" and array[1][1] == "○" and array[2][1] == "○") or
+                (array[0][2] == "○" and array[1][2] == "○" and array[2][2] == "○") or (
+                        array[0][0] == "○" and array[1][1] == "○" and array[2][2] == "○") or
+                (array[0][2] == "○" and array[1][1] == "○" and array[2][0] == "○")):
+            return "result: Maru WIN!!"
+        elif (array[0] == ["×", "×", "×"] or array[1] == ["×", "×", "×"] or array[2] == ["×", "×", "×"] or
+              (array[0][0] == "×" and array[1][0] == "×" and array[2][0] == "×") or (
+                      array[0][1] == "×" and array[1][1] == "×" and array[2][1] == "×") or
+              (array[0][2] == "×" and array[1][2] == "×" and array[2][2] == "×") or (
+                      array[0][0] == "×" and array[1][1] == "×" and array[2][2] == "×") or
+              (array[0][2] == "×" and array[1][1] == "×" and array[2][0] == "×")):
+            return "result: Batsu WIN!!"
+        else:
+            return "result: DRAW"
 
 a = tictactoe()
 print(a)
 print("GameEnd")
+
+
+"""
+あとはせっかくやったエラー処理がCLIでは機能してないかも
+
+mainのブランチでちょっと修正してて、強制チェックアウトしたから事故ってるかもしれへん？？
+"""
