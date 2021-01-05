@@ -11,6 +11,23 @@ def turn(array: list, who: str, m: int, n: int) -> str:
         res += "\n"
     return res
 
+def whowin(array):
+    if (array[0] == ["○", "○", "○"] or array[1] == ["○", "○", "○"] or array[2] == ["○", "○", "○"] or
+            (array[0][0] == "○" and array[1][0] == "○" and array[2][0] == "○") or (
+                    array[0][1] == "○" and array[1][1] == "○" and array[2][1] == "○") or
+            (array[0][2] == "○" and array[1][2] == "○" and array[2][2] == "○") or (
+                    array[0][0] == "○" and array[1][1] == "○" and array[2][2] == "○") or
+            (array[0][2] == "○" and array[1][1] == "○" and array[2][0] == "○")):
+        return "result: ○ WIN!!"
+    elif (array[0] == ["×", "×", "×"] or array[1] == ["×", "×", "×"] or array[2] == ["×", "×", "×"] or
+          (array[0][0] == "×" and array[1][0] == "×" and array[2][0] == "×") or (
+                  array[0][1] == "×" and array[1][1] == "×" and array[2][1] == "×") or
+          (array[0][2] == "×" and array[1][2] == "×" and array[2][2] == "×") or (
+                  array[0][0] == "×" and array[1][1] == "×" and array[2][2] == "×") or
+          (array[0][2] == "×" and array[1][1] == "×" and array[2][0] == "×")):
+        return "result: × WIN!!"
+    else:
+        return None
 
 def tictactoe() -> str:
     array = [["?", "?", "?"], ["?", "?", "?"], ["?", "?", "?"]]
@@ -21,20 +38,8 @@ def tictactoe() -> str:
     print("(1,1) (1,2) (1,3)\n(2,1) (2,2) (2,3)\n(3,1) (3,2) (3,3)\n")
     print("先攻は○の人です")
     while cnt < 9:
-        if (array[0] == ["○", "○", "○"] or array[1] == ["○", "○", "○"] or array[2] == ["○", "○", "○"] or
-                (array[0][0] == "○" and array[1][0] == "○" and array[2][0] == "○") or (
-                        array[0][1] == "○" and array[1][1] == "○" and array[2][1] == "○") or
-                (array[0][2] == "○" and array[1][2] == "○" and array[2][2] == "○") or (
-                        array[0][0] == "○" and array[1][1] == "○" and array[2][2] == "○") or
-                (array[0][2] == "○" and array[1][1] == "○" and array[2][0] == "○")):
-            return "result: Maru WIN!!"
-        elif (array[0] == ["×", "×", "×"] or array[1] == ["×", "×", "×"] or array[2] == ["×", "×", "×"] or
-              (array[0][0] == "×" and array[1][0] == "×" and array[2][0] == "×") or (
-                      array[0][1] == "×" and array[1][1] == "×" and array[2][1] == "×") or
-              (array[0][2] == "×" and array[1][2] == "×" and array[2][2] == "×") or (
-                      array[0][0] == "×" and array[1][1] == "×" and array[2][2] == "×") or
-              (array[0][2] == "×" and array[1][1] == "×" and array[2][0] == "×")):
-            return "result: Batsu WIN!!"
+        if whowin(array) != None:
+            return whowin(array)
         else:
             if now == "M":
                 print("今は○の人のターンです")
@@ -74,27 +79,14 @@ def tictactoe() -> str:
                 now = "M"
                 cnt += 1
     else:
-        if (array[0] == ["○", "○", "○"] or array[1] == ["○", "○", "○"] or array[2] == ["○", "○", "○"] or
-                (array[0][0] == "○" and array[1][0] == "○" and array[2][0] == "○") or (
-                        array[0][1] == "○" and array[1][1] == "○" and array[2][1] == "○") or
-                (array[0][2] == "○" and array[1][2] == "○" and array[2][2] == "○") or (
-                        array[0][0] == "○" and array[1][1] == "○" and array[2][2] == "○") or
-                (array[0][2] == "○" and array[1][1] == "○" and array[2][0] == "○")):
-            return "result: Maru WIN!!"
-        elif (array[0] == ["×", "×", "×"] or array[1] == ["×", "×", "×"] or array[2] == ["×", "×", "×"] or
-              (array[0][0] == "×" and array[1][0] == "×" and array[2][0] == "×") or (
-                      array[0][1] == "×" and array[1][1] == "×" and array[2][1] == "×") or
-              (array[0][2] == "×" and array[1][2] == "×" and array[2][2] == "×") or (
-                      array[0][0] == "×" and array[1][1] == "×" and array[2][2] == "×") or
-              (array[0][2] == "×" and array[1][1] == "×" and array[2][0] == "×")):
-            return "result: Batsu WIN!!"
+        if whowin(array) != None:
+            return whowin(array)
         else:
             return "result: DRAW"
-
-a = tictactoe()
-print(a)
-print("GameEnd")
-
+if __name__ == "__main__":
+    a = tictactoe()
+    print(a)
+    print("GameEnd")
 
 """
 あとはせっかくやったエラー処理がCLIでは機能してないかも
