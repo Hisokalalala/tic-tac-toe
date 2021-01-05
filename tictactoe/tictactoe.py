@@ -18,16 +18,16 @@ def whowin(array):
             (array[0][2] == "○" and array[1][2] == "○" and array[2][2] == "○") or (
                     array[0][0] == "○" and array[1][1] == "○" and array[2][2] == "○") or
             (array[0][2] == "○" and array[1][1] == "○" and array[2][0] == "○")):
-        return "result: ○ WIN!!"
+        return 1
     elif (array[0] == ["×", "×", "×"] or array[1] == ["×", "×", "×"] or array[2] == ["×", "×", "×"] or
           (array[0][0] == "×" and array[1][0] == "×" and array[2][0] == "×") or (
                   array[0][1] == "×" and array[1][1] == "×" and array[2][1] == "×") or
           (array[0][2] == "×" and array[1][2] == "×" and array[2][2] == "×") or (
                   array[0][0] == "×" and array[1][1] == "×" and array[2][2] == "×") or
           (array[0][2] == "×" and array[1][1] == "×" and array[2][0] == "×")):
-        return "result: × WIN!!"
+        return -1
     else:
-        return None
+        return 0
 
 def tictactoe() -> str:
     array = [["?", "?", "?"], ["?", "?", "?"], ["?", "?", "?"]]
@@ -38,8 +38,10 @@ def tictactoe() -> str:
     print("(1,1) (1,2) (1,3)\n(2,1) (2,2) (2,3)\n(3,1) (3,2) (3,3)\n")
     print("先攻は○の人です")
     while cnt < 9:
-        if whowin(array) != None:
-            return whowin(array)
+        if whowin(array) == 1:
+            return "result: ○ WIN!!"
+        elif whowin(array) == -1:
+            return "result: × WIN!!"
         else:
             if now == "M":
                 print("今は○の人のターンです")
@@ -79,8 +81,10 @@ def tictactoe() -> str:
                 now = "M"
                 cnt += 1
     else:
-        if whowin(array) != None:
-            return whowin(array)
+        if whowin(array) == 1:
+            return "result: ○ WIN!!"
+        elif whowin(array) == -1:
+            return "result: × WIN!!"
         else:
             return "result: DRAW"
 

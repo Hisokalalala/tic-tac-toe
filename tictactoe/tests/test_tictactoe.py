@@ -10,6 +10,7 @@ class Test(TestCase):
 
 class Test(TestCase):
     def test_whowin(self):
-        self.assertEqual(whowin([["○", "○", "○"], ["×", "×", "?"], ["?", "?", ""]]), "result: ○ WIN!!")
-        self.assertEqual(whowin([["○", "?", "×"], ["○", "×", "?"], ["○", "?", "?"]]), "result: ○ WIN!!")
-        self.assertEqual(whowin([["○", "○", "×"], ["○", "×", "?"], ["×", "○", "?"]]), "result: × WIN!!")
+        self.assertEqual(whowin([["○", "○", "○"], ["×", "×", "?"], ["?", "?", "?"]]), 1)
+        self.assertEqual(whowin([["○", "?", "×"], ["○", "×", "?"], ["○", "?", "?"]]), 1)
+        self.assertEqual(whowin([["○", "○", "×"], ["○", "×", "?"], ["×", "○", "?"]]), -1)
+        self.assertEqual(whowin([["○", "×", "○"], ["×", "○", "○"], ["×", "○", "×"]]), 0)
