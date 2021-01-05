@@ -11,7 +11,6 @@ def turn(array: list, who: str, m: int, n: int) -> str:
         res += "\n"
     return res
 
-
 def tictactoe() -> str:
     array = [["?", "?", "?"], ["?", "?", "?"], ["?", "?", "?"]]
     cnt = 0
